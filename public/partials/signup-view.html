@@ -1,0 +1,47 @@
+<div class="about container white">
+  <div class="row signup-form col l4">
+    <h5 class="light-blue-text text-lighten-1">Sign Up</h5>
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s6">
+         <i class="material-icons prefix">person</i>
+          <input ng-model ="firstname" id="firstname" type="text" class="validate">
+          <label for="firstname">First Name</label>
+        </div>
+        <div class="input-field col s6">
+         <i class="material-icons prefix">person</i>
+          <input ng-model ="lastname" id="lastname" type="text" class="validate">
+          <label for="lastname">Last Name</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+         <i class="material-icons prefix">account_circle</i>
+          <input ng-model ="username" id="username" type="text" class="validate">
+          <label for="username">Username</label>
+        </div>
+        <div class="input-field col s6">
+         <i class="material-icons prefix">email</i>
+          <input ng-model ="email" id="email" type="text" class="validate">
+          <label for="email" data-error="provide a valid email">Email</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+         <i class="material-icons prefix">vpn_key</i>
+          <input ng-model ="password" id="password1" type="password" class="validate">
+          <label for="password1" data-error="password must be at least 6 characters">Password</label>
+        </div>
+        <div class="input-field col s6">
+         <i class="material-icons prefix">verified_user</i>
+          <input id="password2" type="password" class="validate">
+          <label for="password2" data-error="password must be at least 6 characters">Re-enter password</label>
+        </div>
+      </div>
+      <div class="row center s6 ">
+          <a href="/"><button class="btn cancel light-blue-text">Cancel</button></a>
+        <button class="btn" ng-click="signup()"><i class="material-icons prefix">send</i>Submit</button>
+      </div>
+    </form>
+  </div>
+</div>

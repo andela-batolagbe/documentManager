@@ -1,0 +1,26 @@
+<!-- <nav>
+  <div class="nav-wrapper white lighten">
+    <a href="/home" class="brand-logo white light-blue-text text-accent">docMANAGER</a>
+    <ul class="right hide-on-med-and-down">
+      <li>
+        <a class=" login waves-effect grey-text text-darken-2 btn-flat" href="/">Log Out</a>
+      </li>
+    </ul>
+  </div>
+</nav> -->
+<md-toolbar layout="row" class=" md-primary-2 md-whiteframe-z2">
+  <div class="md-toolbar-tools">
+    <h2>
+          <span class = "title">docManager</span>
+        </h2>
+    <span flex></span>
+    </md-button>
+    <a href="/">
+      <md-button class="login">
+        Log out
+      </md-button>
+    </a>
+  </div>
+</md-toolbar>
+<div ui-view="userView"></div>
+<div ui-view="docView"></div>

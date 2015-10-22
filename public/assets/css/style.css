@@ -1,0 +1,198 @@
+/**
+ * documentManager App
+ * built by Bisoye
+ * Andela traininng checkpoint 4
+ */
+
+.main {
+  background-color: #eeeeee;
+}
+
+.brand-logo {
+  padding-right: 15px !important;
+  padding-left: 15px !important;
+}
+
+.nav-button {
+  font-family: "Roboto";
+  font-weight: bold;
+}
+
+.login {
+  margin-left: 10px;
+  border: solid !important;
+  border-color: #0288d1 !important;
+  border-width: 2px !important;
+}
+
+.signup {
+  margin-right: 10px;
+  background-color: #0288d1 !important;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+}
+
+nav ul li .highlight:hover {
+  background-color: none !important;
+}
+
+nav ul li .highlight:active {
+  background-color: none !important;
+}
+
+.main-intro {
+  text-align: center;
+  margin-top: 10px;
+  width: 85%;
+  padding-bottom: 200px;
+  padding-top: 150px;
+  background-image: url('../images/paper-stack-2.jpg');
+  background-size: 100%;
+}
+
+.about {
+  text-align: center;
+  margin-top: 10px;
+  width: 85%;
+  padding-top: 40px;
+  padding-bottom: 100px;
+}
+
+.intro-text {
+  display: inline-block;
+  padding-right: 15px;
+  padding-left: 15px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.detail {
+  font-weight: lighter;
+  display: inline-block !important;
+  padding-right: 20px !important;
+  padding-left: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.cards {
+  padding-top: 30px;
+  margin: auto !important;
+}
+
+.signup-form {
+  width: 60%;
+  margin: auto !important;
+  border: solid !important;
+  border-color: #0288d1 !important;
+  border-width: 1px !important;
+  padding-top: 20px;
+  padding-bottom: 40px;
+  margin-top: 40px !important;
+}
+
+.login-form {
+  width: 50%;
+  margin: auto !important;
+  border: solid !important;
+  border-color: #0288d1 !important;
+  border-width: 1px !important;
+  padding-top: 20px;
+  padding-bottom: 40px;
+  margin-top: 40px !important;
+}
+
+.input-field label {
+  color: #0288d1;
+}
+
+
+/* style for text input */
+
+
+/* label focus color */
+
+.input-field input[type=text]:focus + label {
+  color: #0288d1;
+}
+
+
+/* label underline focus color */
+
+.input-field input[type=text]:focus {
+  border-bottom: 1px solid #0288d1;
+  box-shadow: 0 1px 0 0 #0288d1;
+}
+
+
+/* valid color */
+
+.input-field input[type=text].valid {
+  border-bottom: 1px solid #0288d1;
+  box-shadow: 0 1px 0 0 #0288d1;
+}
+
+
+/* invalid color */
+
+.input-field input[type=text].invalid {
+  border-bottom: 1px solid #0288d1;
+  box-shadow: 0 1px 0 0 #0288d1;
+}
+
+
+/* icon prefix focus color */
+
+.input-field .prefix.active {
+  color: #0288d1;
+}
+
+
+/*style for Password input */
+
+
+/* label focus color */
+
+.input-field input[type=password]:focus + label {
+  color: #0288d1;
+}
+
+
+/* label underline focus color */
+
+.input-field input[type=password]:focus {
+  border-bottom: 1px solid #0288d1;
+  box-shadow: 0 1px 0 0 #0288d1;
+}
+
+
+/* valid color */
+
+.input-field input[type=password].valid {
+  border-bottom: 1px solid #0288d1;
+  box-shadow: 0 1px 0 0 #0288d1;
+}
+
+
+/* invalid color */
+
+.input-field input[type=password].invalid {
+  border-bottom: 1px solid #0288d1;
+  box-shadow: 0 1px 0 0 #0288d1;
+}
+
+.cancel {
+  background-color: transparent;
+}
+
+.center {
+  margin: auto;
+}
+
+.title{
+  color: #0288d1;
+  font-weight: bold;
+}

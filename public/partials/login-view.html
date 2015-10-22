@@ -1,0 +1,31 @@
+<div class="about container white">
+  <div class="row login-form col l4">
+    <h5 class="light-blue-text text-lighten-1">Log In</h5>
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s11">
+          <i class="material-icons prefix">account_circle</i>
+          <input ng-model="username" id="username" type="text" class="validate">
+          <label for="username">Username</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s11">
+          <i class="material-icons prefix">vpn_key</i>
+          <input ng-model="password" id="password" type="password" class="validate">
+          <label for="password" data-error="password must be at least 6 characters">Password</label>
+        </div>
+      </div>
+      <div class="row center s6">
+        <a href="/"><button class="btn cancel light-blue-text">Cancel</button></a>
+        <button class="btn" ng-click="signin()"><i class="material-icons">send</i>Submit</button>
+      </div>
+    </form>
+  </div>
+  <div>
+    <p class="light-blue-text">Don't have an account?</p>
+    <a href="/signup">
+      <button class="btn">Register Here</button>
+    </a>
+  </div>
+</div>
