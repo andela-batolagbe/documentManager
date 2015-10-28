@@ -1,31 +1,30 @@
-<div class="about container white">
-  <div class="row login-form col l4">
-    <h5 class="light-blue-text text-lighten-1">Log In</h5>
-    <form class="col s12">
-      <div class="row">
-        <div class="input-field col s11">
-          <i class="material-icons prefix">account_circle</i>
-          <input ng-model="username" id="username" type="text" class="validate">
-          <label for="username">Username</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s11">
-          <i class="material-icons prefix">vpn_key</i>
-          <input ng-model="password" id="password" type="password" class="validate">
-          <label for="password" data-error="password must be at least 6 characters">Password</label>
-        </div>
-      </div>
-      <div class="row center s6">
-        <a href="/"><button class="btn cancel light-blue-text">Cancel</button></a>
-        <button class="btn" ng-click="signin()"><i class="material-icons">send</i>Submit</button>
-      </div>
-    </form>
+<div class="about">
+  <div layout="column" class="md-whiteframe-z3 signup-form">
+    <h5 class="heading md-headline">Sign Up</h5>
+    <md-divider style="margin-bottom: 10px"></md-divider>
+    <md-input-container flex>
+      <ng-md-icon icon="account_circle" style="fill: #0288d1;"></ng-md-icon>
+      <input class="heading" ng-model="username" type="text" placeholder="Username" ng-required="true">
+    </md-input-container>
+    <md-input-container flex>
+      <ng-md-icon icon="vpn_key" style="fill: #0288d1;"></ng-md-icon>
+      <input class="heading" ng-model="password" type="password" placeholder="Password" ng-required="true">
+    </md-input-container>
+    <div class="row center s6 ">
+      <a href="/">
+        <md-button class="login">
+          Cancel
+        </md-button style: "fill: light-blue;">
+      </a>
+      <md-button type="submit" ng-click="signin()" class="signup">Log in
+        <ng-md-icon icon="send" style="fill: #ffffff;"></ng-md-icon>
+      </md-button>
+    </div>
   </div>
   <div>
-    <p class="light-blue-text">Don't have an account?</p>
+    <p class="heading">Don't have an account?</p>
     <a href="/signup">
-      <button class="btn">Register Here</button>
+      <md-button class="login">Register Here</md-button>
     </a>
   </div>
 </div>

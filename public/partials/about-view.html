@@ -1,43 +1,39 @@
-<div id="about" class="about container white">
+<md-content id="about" class="about">
   <div>
-    <h5 class="detail grey-text text-darken-2">
-		docManager is an app that enable you to create, store and share
-		documents with friends an family. It provides a platform to share
-		thoughts, plan, idea and any other information with people and also
-		gets feedback that can be very beneficial on your writeups.
-	</h5>
-    <div class="divider"></div>
-    <div class="row cards">
-      <div class="col s4">
-        <div class="card z-depth-1 light-blue">
-          <div class="card-content white-text">
-            <span class="card-title"><i class = "material-icons large">note_add</i><br>
-            Create Documents</span>
-            <hr>
-            <p>Create simple documents on topics that are of utmost concern to you you can also edit and update documents</p>
-          </div>
-        </div>
-      </div>
-      <div class="col s4">
-        <div class="card z-depth-1 light-blue">
-          <div class="card-content white-text">
-            <span class="card-title"><i class = "material-icons large">group_add</i><br>
+    <h5 class="detail md-headline">
+    docManager is an app that enable you to create, store and share
+    documents with friends an family. It provides a platform to share
+    thoughts, plan, idea and any other information with people and also
+    gets feedback that can be very beneficial on your writeups.
+  </h5>
+    <md-divider></md-divider>
+    <div layout="rows" class="cards">
+      <md-card class="card md-whiteframe-1dp">
+        <md-card-content class="md-primary">
+          <span class="md-title"><ng-md-icon icon="group_add" style="fill: white; margin-bottom: 40px;" size="55"></ng-md-icon> <br>
             Share Documents</span>
-            <hr>
-            <p>Saved documents can be viewed by all users, hence you are sharing your thoughts with everyone. They can also give you their opinion on ideas, and issues</p>
-          </div>
-        </div>
-      </div>
-      <div class="col s4">
-        <div class="card z-depth-1 light-blue">
-          <div class="card-content white-text">
-            <span class="card-title"><i class = "material-icons large">chrome_reader_mode</i><br>
+          <hr>
+          <p>Create simple documents on topics that are of utmost concern to you you can also edit and update documents</p>
+        </md-card-content>
+      </md-card>
+      <md-card class="card md-whiteframe-1dp">
+        <md-card-content class="md-primary">
+          <ng-md-icon icon="note_add" style="fill: white; margin-bottom: 40px;" size="55"></ng-md-icon>
+          <br>
+          <span class="card-title">
+            Create Documents</span>
+          <hr>
+          <p>Saved documents can be viewed by all users, hence you are sharing your thoughts with everyone. They can also give you their opinion on ideas, and issues</p>
+        </md-card-content>
+      </md-card>
+      <md-card class="card md-whiteframe-1dp">
+        <md-card-content class="md-primary">
+          <span class="card-title"><ng-md-icon icon="my_library_books" style="fill: white; margin-bottom: 40px;" size="55"></ng-md-icon><br style ="padding-bottom: 20p">
             View Everyone's Documents</span>
-            <hr>
-            <p>You have access to tons of documents created by others, its an easy way to learn, discover and gain inspiration</p>
-          </div>
-        </div>
-      </div>
+          <hr>
+          <p>You have access to tons of documents created by others, its an easy way to learn, discover and gain inspiration</p>
+        </md-card-content>
+      </md-card>
     </div>
   </div>
-</div>
+</md-content>

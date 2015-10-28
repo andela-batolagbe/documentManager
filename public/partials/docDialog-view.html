@@ -1,0 +1,35 @@
+<md-dialog ng-cloak>
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>Create A New Document</h2>
+      <span flex></span>
+      <md-button class="md-icon-button" ng-click="cancel()">
+        <ng-md-icon icon="close" aria-label="cancel">
+          </md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+  <md-dialog-content style="width:800px;height:610px; ">
+    <div class="md-dialog-content">
+      <md-divider style="margin-bottom: 10px"></md-divider>
+      <div layout="column">
+        <md-input-container flex>
+          <input class="heading" ng-model="title" type="text" placeholder="Title" ng-required="true">
+        </md-input-container>
+        <md-input-container flex>
+          <textarea class="heading" columns="1" ng-model="content" placeholder="Content" ng-required="true"></textarea>
+        </md-input-container>
+      </div>
+    </div>
+  </md-dialog-content>
+  <div class="md-actions" layout="row">
+    <a href="/userhome">
+      <md-button ng-click = "cancel()" class="login">
+        Cancel
+      </md-button>
+    </a>
+    <md-button type="submit" ng-click="createDocument(); hide()" class="signup">Create
+      <ng-md-icon icon="send" style="fill: #ffffff;"></ng-md-icon>
+    </md-button>
+  </div>
+</md-dialog>

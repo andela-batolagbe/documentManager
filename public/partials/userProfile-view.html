@@ -1,0 +1,58 @@
+<md-content class="about">
+  <div layout="column" class="md-whiteframe-z3 signup-form" data-ng-init="getUserDetails()">
+    <h5 class="heading md-headline">My Profile</h5>
+    <md-divider style="margin-bottom: 10px"></md-divider>
+    <div layout="column" ng-hide="editProfile">
+      <span class="heading profile" flex>Username: {{userDetails.username}}</span>
+      <span class="heading profile" flex>Firstname: {{userDetails['name']['first']}}</span>
+      <span class="heading profile" flex>Lastname: {{userDetails['name']['last']}}</span>
+      <span class="heading profile" flex>Email: {{userDetails.email}}</span>
+      <div class="row center" layout="row">
+        <md-button ng-click="redirect('userhome')" class="login">
+          Close
+        </md-button>
+        <md-button type="submit" ng-click="editProfile = true" class="signup">Edit Profile
+          <ng-md-icon icon="send" style="fill: #ffffff;"></ng-md-icon>
+        </md-button>
+      </div>
+    </div>
+  </div>
+  <div layout="column" class="md-whiteframe-z3 signup-form" ng-show="editProfile">
+    <h5 class="heading md-headline">Edit Profile</h5>
+    <md-divider style="margin-bottom: 10px"></md-divider>
+    <div class="column">
+      <md-input-container flex>
+        <ng-md-icon icon="person" style="fill: #0288d1;"></ng-md-icon>
+        <input class="heading" aria-label="first" ng-model="firstname" type="text" ng-bind="userDetails['name']['first']" ng-required="true">
+      </md-input-container>
+      <md-input-container flex>
+        <ng-md-icon icon="person" style="fill: #0288d1;"></ng-md-icon>
+        <input class="heading" ng-model="lastname" aria-label="last" type="text" ng-bind="userDetails['name']['last']" ng-required="true">
+      </md-input-container>
+    </div>
+    <div layout="column">
+      <md-input-container flex>
+        <ng-md-icon icon="account_circle" style="fill: #0288d1;"></ng-md-icon>
+        <input class="heading" aria-label="username" ng-model="username" type="text" ng-bind="userDetails.username" ng-required="true">
+      </md-input-container flex>
+      <md-input-container flex>
+        <ng-md-icon icon="email" style="fill: #0288d1;"></ng-md-icon>
+        <input class="heading" aria-label="email" ng-model="email" type="email" ng-bind="userDetails.email" ng-required="true">
+      </md-input-container>
+    </div>
+    <div layout="column">
+      <md-input-container flex>
+        <ng-md-icon icon="vpn_key" style="fill: #0288d1;"></ng-md-icon>
+        <input class="heading" md-minlength="6" ng-model="password" type="password" placeholder="Password" ng-required="true">
+      </md-input-container>
+    </div>
+    <div class="row center s6 ">
+      <md-button ng-click="editProfile = false" class="login">
+        Cancel
+      </md-button style: "fill: light-blue;">
+      <md-button type="submit" ng-click="updateUser()" class="signup">Update
+        <ng-md-icon icon="send" style="fill: #ffffff;"></ng-md-icon>
+      </md-button>
+    </div>
+  </div>
+</md-content>

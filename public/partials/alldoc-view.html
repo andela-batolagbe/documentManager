@@ -1,6 +1,6 @@
 <md-content class="about">
-  <div layout="column" class="md-whiteframe-1dp signup-form" data-ng-init="getAllUserDocuments()">
-    <h5 class="heading md-headline">My Documents</h5>
+  <div layout="column" class="md-whiteframe-1dp signup-form" data-ng-init="getAllDocuments()">
+    <h5 class="heading md-headline">All Documents</h5>
     <md-divider style="margin-bottom: 10px"></md-divider>
     <div class="docs" ng-repeat="doc in Documents">
       <md-card class="md-primary doc-cards md-whiteframe-1dp">
@@ -14,13 +14,6 @@
             <md-chip>Last modified: {{doc.lastModified | date: DD/MM/YYYY}}</md-chip>
           </md-chips>
         </md-card-content>
-        <div class="center" layout="row">
-          <md-button ng-click="deleteDocument()" class="login">
-            Delete
-          </md-button>
-          <md-button type="submit" ng-click="editDoc = true" class="login">Edit
-          </md-button>
-        </div>
       </md-card>
     </div>
   </div>

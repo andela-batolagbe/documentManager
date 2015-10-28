@@ -1,26 +1,54 @@
-<!-- <nav>
-  <div class="nav-wrapper white lighten">
-    <a href="/home" class="brand-logo white light-blue-text text-accent">docMANAGER</a>
-    <ul class="right hide-on-med-and-down">
-      <li>
-        <a class=" login waves-effect grey-text text-darken-2 btn-flat" href="/">Log Out</a>
-      </li>
-    </ul>
-  </div>
-</nav> -->
+<md-content>
 <md-toolbar layout="row" class=" md-primary-2 md-whiteframe-z2">
   <div class="md-toolbar-tools">
+    <md-button class="md-icon-button" ng-click="toggleSideNav('left')">
+      <ng-md-icon icon="menu" style: "fill: #0288d1;"></ng-md-icon>
+      <md-tooltip>Menu</md-tooltip>
+    </md-button>
     <h2>
           <span class = "title">docManager</span>
         </h2>
     <span flex></span>
-    </md-button>
-    <a href="/">
-      <md-button class="login">
+      <md-button ng-click="logout(); redirect('home')" class="login">
         Log out
       </md-button>
-    </a>
   </div>
 </md-toolbar>
-<div ui-view="userView"></div>
+<md-sidenav class="md-sidenav-left md-whiteframe-z3" md-component-id="left">
+  <div layout="row">
+    <div class="md-toolbar-tools">
+      <h2>
+          <span class ="heading">Menu</span>
+        </h2>
+      <span flex></span>
+      <md-button class="md-icon-button" ng-click="toggleSideNav('left')">
+        <md-tooltip>Close menu</md-tooltip>
+        <ng-md-icon icon="close"></ng-md-icon>
+      </md-button>
+    </div>
+  </div>
+  <md-divider></md-divider>
+  <md-list>
+    <md-subheader class="md-no-sticky">User</md-subheader>
+    <md-list-item>
+      <md-button ng-click="redirect('view-profile')" class="heading">
+        <ng-md-icon icon="account_circle" style="fill: #0288d1; margin-right: 10px;"></ng-md-icon>My Profile</md-button>
+    </md-list-item>
+    <md-divider></md-divider>
+    <md-subheader class="md-no-sticky">Documents</md-subheader>
+    <md-list-item>
+      <md-button ng-click="showDocDialog($event)" class="heading">
+        <ng-md-icon icon="add_circle" style="fill: #0288d1; margin-right: 10px;"></ng-md-icon>Create New Document</md-button>
+    </md-list-item>
+    <md-list-item>
+      <md-button ng-click="redirect('userhome')" class="heading">
+        <ng-md-icon icon="my_library_books" style="fill: #0288d1; margin-right: 10px;"></ng-md-icon>View My Documents</md-button>
+    </md-list-item>
+    <md-list-item>
+      <md-button ng-click="redirect('all-docs')" class="heading">
+        <ng-md-icon icon="my_library_books" style="fill: #0288d1; margin-right: 10px;"></ng-md-icon>View All Documents</md-button>
+    </md-list-item>
+  </md-list>
+</md-sidenav>
 <div ui-view="docView"></div>
+</md-content>
