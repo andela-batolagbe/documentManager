@@ -3,7 +3,6 @@ var app = express();
 
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
-var cookieParser = require('cookie-parser');
 var morgan = require('morgan');
 var session = require('express-session');
 var methodOverride = require('method-override');
@@ -39,8 +38,6 @@ app.use(bodyParser.urlencoded({
 
 // override with the X-HTTP-Method-Override header in the request. simulate DELETE/PUT
 app.use(methodOverride('X-HTTP-Method-Override'));
-
-app.use(cookieParser());
 
 app.use('/api', router);
 
