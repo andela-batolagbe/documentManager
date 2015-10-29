@@ -4,7 +4,7 @@ var app = angular.module('documentManagerApp');
 
 app.value('baseUrl', 'http://localhost:3000');
 
-app.factory('UserService', ['$http', 'baseUrl', '$auth', function($http, baseUrl, $auth) {
+app.factory('UserService', ['$http', 'baseUrl', function($http, baseUrl) {
 
   var User = {
 
@@ -19,12 +19,16 @@ app.factory('UserService', ['$http', 'baseUrl', '$auth', function($http, baseUrl
       return $http.post(baseUrl + '/api/users/', data);
     },
 
+    getUser: function(id) {
+      return $http.get(baseUrl + '/api/users/' + id);
+    },
+
     updateUserData: function(id, data) {
-      $http.put(baseUrl + '/api/users/' + id);
+      return $http.put(baseUrl + '/api/users/' + id, data);
     },
 
     deleteUser: function(id, data) {
-      $http.delete(baseUrl + '/api/users/' + id);
+      return $http.delete(baseUrl + '/api/users/' + id);
     }
   };
 

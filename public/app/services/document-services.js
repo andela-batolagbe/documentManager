@@ -2,35 +2,40 @@
 
 var app = angular.module('documentManagerApp');
 
-app.factory('documentService', ['$http', 'baseUrl', function($http, baseUrl, $auth) {
+app.factory('docService', ['$http', 'baseUrl', function($http, baseUrl) {
 
-  var Document = {
+    var Document = {
 
-    addDocument: function(data, success, error) {
+      addDocument: function(data) {
 
-      $http.post(baseUrl + '/api/documents', data)
-        .success(success).error(error);
-    },
+        return $http.post(baseUrl + '/api/documents', data);
+      },
 
-    getAllDocuments: function(success, error) {
-      $http.get(baseUrl + '/api/documents')
-        .success(success).error(error);
-    },
+      getAllDocuments: function() {
+        return $http.get(baseUrl + '/api/documents');
 
-    getOneDocument: function(id, success, error) {
-      $http.get(baseUrl + '/api/documents/' + id)
-        .success(success).error(error);
-    },
-    updateDocument: function(id, data, success, error) {
-      $http.put(baseUrl + '/api/documents/' + id, data)
-        .success(success).error(error);
-    },
+      },
 
-    deleteDocument: function(id, success, error) {
-      $http.delete(baseUrl + '/api/documents/' + id)
-        .success(success).error(error);
-    }
-  };
+      getOneDocument: function(id) {
+        return $http.get(baseUrl + '/api/documents/' + id);
+      },
 
-  return Document;
-}]);
+      getAllUserDocuments: function(userId) {
+        return $http.get(baseUrl + '/api/users/' + userId + '/documents');
+      },
+
+      updateDocument: function(id, data) {
+        return $http.put(baseUrl + '/api/documents/' + id, data);
+      },
+
+      deleteDocument: function(id, success, error) {
+        return $http.delete(baseUrl + '/api/documents/' + id);
+      }
+    };
+
+    return Document;
+
+  }
+
+
+]);
