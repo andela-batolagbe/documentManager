@@ -2,8 +2,8 @@
   <div layout="column" class="md-whiteframe-1dp signup-form" data-ng-init="getAllUserDocuments()">
     <h5 class="heading md-headline">My Documents</h5>
     <md-divider style="margin-bottom: 10px"></md-divider>
+    <div ng-hide="editDoc"></div>
     <div class="docs" ng-repeat="doc in userDocuments">
-      <div ng-hide="editDoc"></div>
       <span ng-bind="doc._id" ng-hide="true"></span>
       <md-card class="md-primary doc-cards md-whiteframe-1dp">
         <md-card-content class="heading">
@@ -39,21 +39,22 @@
         <h5 class="heading">Edit</h5>
         <md-divider style="margin-bottom: 10px"></md-divider>
         <md-input-container flex>
-          <input class="heading" ng-model="title" type="text" placeholder="{{doc.title}}">
+          <label>Title</label>
+          <input class="heading" ng-model="doc.title" type="text">
         </md-input-container>
         <md-input-container flex>
-          <textarea class="heading" columns="1" ng-model="content" placeholder="{{doc.content}}"></textarea>
+          <label>Content</label>
+          <textarea class="heading" columns="1" ng-model="doc.content"></textarea>
         </md-input-container>
-        <div class="row center">
-          <div class="row" layout="row">
-            <md-button ng-click="editDoc = false" class="login">
-              Cancel
-            </md-button>
-            <md-button type="submit" ng-click="editDocument(doc._id); editDoc = false" class="login">Edit
-              <ng-md-icon icon="send" style="fill: #0288d1;"></ng-md-icon>
-            </md-button>
-          </div>
+        <div class="edit-buttons" layout="row">
+          <md-button ng-click="editDoc = false" class="login">
+            Cancel
+          </md-button>
+          <md-button type="submit" ng-click="editDocument(doc._id); editDoc = false" class="login">Edit
+            <ng-md-icon icon="send" style="fill: #0288d1;"></ng-md-icon>
+          </md-button>
         </div>
       </div>
     </div>
+  </div>
 </md-content>
