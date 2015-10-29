@@ -3,10 +3,10 @@
     <h5 class="heading md-headline">My Profile</h5>
     <md-divider style="margin-bottom: 10px"></md-divider>
     <div layout="column" ng-hide="editProfile">
-      <span class="heading profile" flex>Username: {{userDetails.username}}</span>
-      <span class="heading profile" flex>Firstname: {{userDetails['name']['first']}}</span>
-      <span class="heading profile" flex>Lastname: {{userDetails['name']['last']}}</span>
-      <span class="heading profile" flex>Email: {{userDetails.email}}</span>
+      <span class="heading profile" flex>Username: &nbsp;&nbsp;&nbsp; {{userDetails.username}}</span>
+      <span class="heading profile" flex>Firstname: &nbsp;&nbsp;&nbsp; {{userDetails['name']['first']}}</span>
+      <span class="heading profile" flex>Lastname: &nbsp;&nbsp;&nbsp; {{userDetails['name']['last']}}</span>
+      <span class="heading profile" flex>Email: &nbsp;&nbsp;&nbsp; {{userDetails.email}}</span>
       <div class="row center" layout="row">
         <md-button ng-click="redirect('userhome')" class="login">
           Close

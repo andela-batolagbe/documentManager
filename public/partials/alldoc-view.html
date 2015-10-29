@@ -6,13 +6,23 @@
       <md-card class="md-primary doc-cards md-whiteframe-1dp">
         <md-card-content class="heading">
           <span class="md-title">{{doc.title}}</span>
-          <span ng-bind="doc._id" ng-hide="true"></span>
+          <span ng-bind="docId" ng-hide="true">{{doc._id}}</span>
           <hr>
           <p>{{doc.content}}</p>
-          <md-chips style="font-face: bold;">
-            <md-chip>Date created: {{doc.dateCreated | date: DD/MM/YYYY}}</md-chip>
-            <md-chip>Last modified: {{doc.lastModified | date: DD/MM/YYYY}}</md-chip>
-          </md-chips>
+          <md-list layout="row">
+            <md-list-item class ="chips">
+              <div class=" md-list-item-text compact">
+                <p>Date created:
+                  <br>{{doc.dateCreated | date: DD/MM/YYYY}}</p>
+              </div>
+            </md-list-item>
+            <md-list-item class ="chips">
+              <div class="md-list-item-text compact">
+                <p>Last modified:
+                  <br>{{doc.lastModified | date: DD/MM/YYYY}}</p>
+              </div>
+            </md-list-item>
+          </md-list>
         </md-card-content>
       </md-card>
     </div>
