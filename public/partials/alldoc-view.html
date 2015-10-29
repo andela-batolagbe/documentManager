@@ -9,14 +9,14 @@
           <span ng-bind="docId" ng-hide="true">{{doc._id}}</span>
           <hr>
           <p>{{doc.content}}</p>
-          <md-list layout="row">
-            <md-list-item class ="chips">
+          <md-list layout="row" class ="chips">
+            <md-list-item >
               <div class=" md-list-item-text compact">
                 <p>Date created:
                   <br>{{doc.dateCreated | date: DD/MM/YYYY}}</p>
               </div>
             </md-list-item>
-            <md-list-item class ="chips">
+            <md-list-item >
               <div class="md-list-item-text compact">
                 <p>Last modified:
                   <br>{{doc.lastModified | date: DD/MM/YYYY}}</p>
