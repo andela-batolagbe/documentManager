@@ -183,42 +183,6 @@ describe('docManager Controllers', function() {
       expect(location.path).toHaveBeenCalledWith('/');
     });
 
-    it('should update user details', function() {
-
-      var localStorage;
-
-      inject(function(_$localStorage_) {
-        localStorage = _$localStorage_;
-      });
-
-      scope.userDetails = user;
-
-      var data = {
-        username: scope.userDetails.username,
-        email: scope.userDetails.email,
-        password: scope.userDetails.password,
-        name: {
-          first: scope.userDetails.name.first,
-          last: scope.userDetails.name.last
-        }
-      }
-      localStorage.activeUser = {
-        _id: 1,
-        username: user.username,
-        password: user.password
-      };
-
-      mockHttp.whenGET(/\.html$/).respond(200);
-
-      mockHttp.expectPUT('http://localhost:3000/api/users/1').respond({});
-      scope.updateUser();
-      spyOn(location, 'path')
-      mockHttp.flush()
-      expect(scope.updateUser).toBeDefined();
-      expect(scope.updateUser).toBeTruthy();
-      expect(location.path).toHaveBeenCalledWith('/');
-    });
-
     it('should delete user details', function() {
 
       var localStorage;
@@ -301,46 +265,6 @@ describe('docManager Controllers', function() {
       mockHttp.flush()
       expect(scope.getAllUserDocuments).toBeDefined();
       expect(scope.getAllUserDocuments).toBeTruthy();
-      expect(location.path).toHaveBeenCalledWith('/');
-    });
-
-    it('should edit a document', function() {
-
-      var id = 1
-
-      var docData = {
-        title: doc.title,
-        content: doc.content
-      };
-
-      mockHttp.whenGET(/\.html$/).respond(200);
-
-      mockHttp.expectPUT('http://localhost:3000/api/documents/1').respond({});
-      scope.editDocument(id);
-      spyOn(location, 'path')
-      mockHttp.flush()
-      expect(scope.editDocument).toBeDefined();
-      expect(scope.editDocument).toBeTruthy();
-      expect(location.path).toHaveBeenCalledWith('/');
-    });
-
-    it('should delete a document', function() {
-
-      var id = 1
-
-      var docData = {
-        title: doc.title,
-        content: doc.content
-      };
-
-      mockHttp.whenGET(/\.html$/).respond(200);
-
-      mockHttp.expectDELETE('http://localhost:3000/api/documents/1').respond({});
-      scope.deleteDocument(id);
-      spyOn(location, 'path')
-      mockHttp.flush()
-      expect(scope.deleteDocument).toBeDefined();
-      expect(scope.deleteDocument).toBeTruthy();
       expect(location.path).toHaveBeenCalledWith('/');
     });
 
