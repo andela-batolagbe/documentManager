@@ -1,7 +1,7 @@
-var app = angular.module('documentManagerApp', ['ui.router', 'satellizer', 'ngMaterial', 'ngMessages', 'ngAnimate', 'ngAria', 'ngMdIcons']);
+var app = angular.module('documentManagerApp', ['ui.router', 'ngMaterial', 'ngMessages', 'ngAnimate', 'ngAria', 'ngMdIcons', 'ngStorage']);
 
-app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$authProvider', '$mdThemingProvider',
-  function($stateProvider, $urlRouterProvider, $locationProvider, $authProvider, $mdThemingProvider, palletes) {
+app.config(['$stateProvider', '$httpProvider', '$urlRouterProvider', '$locationProvider', '$mdThemingProvider',
+  function($stateProvider, $httpProvider, $urlRouterProvider, $locationProvider, $mdThemingProvider, palletes) {
 
     $stateProvider
       .state('home', {
@@ -10,7 +10,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$authP
           '': {
             templateUrl: 'partials/nav-view.html'
           },
-          'theView@home': {
+          'homeView@home': {
             templateUrl: 'partials/home-view.html',
             controller: 'MainCtrl'
           },
@@ -20,29 +20,14 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$authP
           }
         }
       })
-      .state('userhome', {
-        url: "/userhome",
-        views: {
-          '': {
-            templateUrl: 'partials/usernav-view.html'
-          },
-          'userView@userhome': {
-            templateUrl: 'partials/userHome-view.html',
-            controller: 'UserCtrl'
-          },
-          'docView@userhome': {
-            templateUrl: 'partials/doc-view.html',
-            controller: 'docCtrl'
-          }
-        }
-      })
-      .state('login', {
+
+    .state('login', {
         url: "/login",
         views: {
           '': {
             templateUrl: 'partials/nav-view.html'
           },
-          'theView@login': {
+          'homeView@login': {
             templateUrl: 'partials/login-view.html',
             controller: 'UserCtrl'
           }
@@ -54,8 +39,60 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$authP
           '': {
             templateUrl: 'partials/nav-view.html'
           },
-          'theView@signup': {
+          'homeView@signup': {
             templateUrl: 'partials/signup-view.html',
+            controller: 'UserCtrl'
+          }
+        }
+      })
+      .state('userhome', {
+        url: "/userhome",
+        views: {
+          '': {
+            templateUrl: 'partials/usernav-view.html',
+            controller: 'UserCtrl'
+          },
+          'docView@userhome': {
+            templateUrl: 'partials/userHome-view.html',
+            controller: 'docCtrl'
+          }
+        }
+      })
+      .state('all-docs', {
+        url: "/all-docs",
+        views: {
+          '': {
+            templateUrl: 'partials/usernav-view.html',
+            controller: 'UserCtrl'
+          },
+          'docView@all-docs': {
+            templateUrl: 'partials/alldoc-view.html',
+            controller: 'docCtrl'
+          }
+        }
+      })
+      .state('view-profile', {
+        url: "/view-profile",
+        views: {
+          '': {
+            templateUrl: 'partials/usernav-view.html',
+            controller: 'UserCtrl'
+          },
+          'docView@view-profile': {
+            templateUrl: 'partials/userProfile-view.html',
+            controller: 'UserCtrl'
+          }
+        }
+      })
+      .state('edit-profile', {
+        url: "/edit-profile",
+        views: {
+          '': {
+            templateUrl: 'partials/usernav-view.html',
+            controller: 'UserCtrl'
+          },
+          'docView@edit-profile': {
+            templateUrl: 'partials/userProfileEdit-view.html',
             controller: 'UserCtrl'
           }
         }
@@ -84,7 +121,27 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$authP
 
     $mdThemingProvider.theme('default')
       .primaryPalette('newPrimary')
-      .accentPalette('light-blue');
+      .accentPalette('light-blue')
+      .warnPalette('red')
+      .backgroundPalette('newPrimary');
+
+    $httpProvider.interceptors.push(['$q', '$location', '$localStorage', function($q, $location, $localStorage) {
+      return {
+        'request': function(config) {
+          config.headers = config.headers || {};
+          if ($localStorage.userToken) {
+            config.headers['x-access-token'] = $localStorage.userToken;
+          }
+          return config;
+        },
+        'responseError': function(response) {
+          if (response.status === 401 || response.status === 403) {
+            $location.path('/signin');
+          }
+          return $q.reject(response);
+        }
+      };
+    }]);
 
   }
 ]);
