@@ -295,7 +295,7 @@ describe('docManager Controllers', function() {
 
     it('should edit a document', function() {
 
-      scope.id = 1
+      var id = 1
 
       var docData = {
         title: doc.title,
@@ -305,7 +305,7 @@ describe('docManager Controllers', function() {
       mockHttp.whenGET(/\.html$/).respond(200);
 
       mockHttp.expectPUT('http://localhost:3000/api/documents/1').respond({});
-      scope.editDocument();
+      scope.editDocument(id);
       spyOn(location, 'path')
       mockHttp.flush()
       expect(scope.editDocument).toBeDefined();
@@ -315,7 +315,7 @@ describe('docManager Controllers', function() {
 
     it('should delete a document', function() {
 
-      scope.id = 1
+      var id = 1
 
       var docData = {
         title: doc.title,
@@ -325,7 +325,7 @@ describe('docManager Controllers', function() {
       mockHttp.whenGET(/\.html$/).respond(200);
 
       mockHttp.expectDELETE('http://localhost:3000/api/documents/1').respond({});
-      scope.deleteDocument();
+      scope.deleteDocument(id);
       spyOn(location, 'path')
       mockHttp.flush()
       expect(scope.deleteDocument).toBeDefined();
