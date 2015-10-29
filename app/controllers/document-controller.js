@@ -12,10 +12,9 @@ module.exports = {
   createDocument: function(req, res) {
     var docData = req.body;
     var userId;
-    User.find({
+    User.findOne({
       username: docData.user
     }).then(function(user) {
-
       if (!user) {
         return 'cannot post document without user';
       } else {
@@ -35,8 +34,6 @@ module.exports = {
           });
         }
       });
-    }).catch(function(err){
-      console.log(err);
     });
   },
 
