@@ -1,6 +1,7 @@
 angular.module('documentManagerApp')
-  .controller('UserCtrl', ['UserService', '$rootScope', '$state', '$scope', '$location', '$auth',
-    function(UserService, $rootScope, $state, $scope, $location, $auth) {
+  .controller('UserCtrl', ['UserService', '$rootScope', '$state', '$scope', '$location', '$mdSidenav', '$localStorage',
+    function(UserService, $rootScope, $state, $scope, $location, $mdSidenav, $localStorage) {
+
 
       $scope.signin = function() {
 
@@ -10,11 +11,13 @@ angular.module('documentManagerApp')
         };
         UserService.login(data).success(function(res) {
 
-          $auth.setToken(res.token);
-          $location.path('/userhome');
-
+          $localStorage.activeUser = res.user;
+          $localStorage.userToken = res.token;
+          $rootScope.displayStatus(res.message);
+          $state.go('userhome');
         }).error(function(err) {
-          $scope.error = err.message;
+          $rootScope.displayError(err.message);
+           $state.go('login');
         });
       };
 
@@ -30,53 +33,75 @@ angular.module('documentManagerApp')
         };
         UserService.signup(data).success(
           function(res) {
-            $scope.regMessage = res.message;
-            $state.go('userhome');
+            $rootScope.displayStatus(res.message);
+            $state.go('login');
           }).error(function(err) {
-          $scope.regMessage = err.message + 'try, again';
+          $rootScope.displayError(err.message + 'try, again');
         });
       };
 
       $scope.logout = function() {
+
+        $localStorage.$reset();
         UserService.logout().success(
           function(res) {
-            $scope.logoutMessage = res.message;
+            $rootScope.displayStatus(res.message);
             $state.go('home');
           }).error(function(err) {
-          $scope.logMessage = err.message;
+          $rootScope.displayError(err.message);
         });
       };
 
-      $scope.updateUser = function() {
-        var id = $localStorage.user.id;
-        var data = {
-          username: $scope.username,
-          email: $scope.email,
-          password: $scope.password
-        };
-        UserService.updateUserData(id, data).success(
-          function(res) {
-            $scope.updateMessage = res.message;
-            $state.go('userhome');
-          }).error(function(err) {
-          $scope.regMessage = err.message + 'try, again';
+      $rootScope.getUserDetails = function() {
+        var userId = $localStorage.activeUser._id;
+
+        UserService.getUser(userId).success(function(res) {
+
+          $scope.userDetails = res;
+        }).error(function(err) {
+          $rootScope.displayError(err.message);
         });
       };
 
       $scope.deleteUser = function() {
-        // var id = $localStorage.user.id;
-        UserService.deleteUser(id, data).success(
+        var id = $localStorage.activeUser._id;
+        UserService.deleteUser(id).success(
           function(res) {
-            $scope.delMessage = res.message;
-            $state.go('userhome');
+            $rootScope.displayStatus(res.message);
+            $state.go('home');
           }).error(function(err) {
-          $scope.delMessage = err.message;
+          $rootScope.displayStatus(err.message);
         });
       };
 
-      $scope.isAuthenticated = function() {
+      $scope.toggleSideNav = function(Id) {
+        $mdSidenav(Id).toggle();
 
-        return $auth.isAuthenticated();
       };
+
+      $scope.updateUser = function() {
+        var id = $localStorage.activeUser._id;
+        var data = {
+          username: $scope.username,
+          email: $scope.email,
+          password: $scope.password,
+          name: {
+            first: $scope.firstname,
+            last: $scope.lastname
+          }
+        };
+        UserService.updateUserData(id, data).success(
+          function(res) {
+            $rootScope.displayStatus(res.message);
+            $state.go('userhome');
+          }).error(function(err) {
+          $rootScope.displayError(err.message + 'try, again');
+        });
+      };
+
+      $scope.redirect = function(page) {
+        return $state.go(page);
+      };
+
     }
   ]);
