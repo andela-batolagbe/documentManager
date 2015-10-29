@@ -8,7 +8,7 @@ var documentSchema = new Schema({
   ownerId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
-    require: true
+    required: true
   },
 
   title: {
