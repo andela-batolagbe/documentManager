@@ -191,6 +191,17 @@ describe('docManager Controllers', function() {
         localStorage = _$localStorage_;
       });
 
+      scope.userDetails = user;
+
+      var data = {
+        username: scope.userDetails.username,
+        email: scope.userDetails.email,
+        password: scope.userDetails.password,
+        name: {
+          first: scope.userDetails.name.first,
+          last: scope.userDetails.name.last
+        }
+      }
       localStorage.activeUser = {
         _id: 1,
         username: user.username,
@@ -205,7 +216,7 @@ describe('docManager Controllers', function() {
       mockHttp.flush()
       expect(scope.updateUser).toBeDefined();
       expect(scope.updateUser).toBeTruthy();
-      expect(location.path).toHaveBeenCalledWith('/userhome');
+      expect(location.path).toHaveBeenCalledWith('/');
     });
 
     it('should delete user details', function() {
