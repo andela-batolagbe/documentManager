@@ -41,7 +41,7 @@ app.use(methodOverride('X-HTTP-Method-Override'));
 
 app.use('/api', router);
 
-app.get('/', function(req, res) {
+app.get('*', function(req, res) {
   res.sendFile(process.cwd() + '/public/index.html');
 });
 
