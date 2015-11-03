@@ -1,16 +1,16 @@
 <md-content class="about">
-  <div layout="column" class="md-whiteframe-1dp signup-form" data-ng-init="getAllUserDocuments()">
+  <div layout="column" class="docs md-padding md-whiteframe-1dp" data-ng-init="getAllUserDocuments()">
     <h5 class="heading md-headline">My Documents</h5>
     <md-divider style="margin-bottom: 10px"></md-divider>
     <div ng-hide="editDoc"></div>
-    <div class="docs" ng-repeat="doc in userDocuments">
+    <div ng-repeat="doc in userDocuments">
       <span ng-bind="doc._id" ng-hide="true"></span>
-      <md-card class="md-primary doc-cards md-whiteframe-1dp">
+      <md-card class="md-primary md-padding doc-cards md-whiteframe-1dp" >
         <md-card-content class="heading">
           <span class="md-title">{{doc.title}}</span>
           <hr>
           <p>{{doc.content}}</p>
-          <md-list layout="row" class = "chips">
+          <md-list layout="row" class = "chips" layout-wrap>
             <md-list-item >
               <div class=" md-list-item-text compact">
                 <p>Date created:
@@ -25,7 +25,7 @@
             </md-list-item>
           </md-list>
         </md-card-content>
-        <div class="center" layout="row">
+        <div class="edit-buttons" layout="row" layout-wrap>
           <md-button ng-click="deleteDocument(doc._id)" class="login">
             Delete
             <ng-md-icon icon="delete" style="fill: #0288d1;"></ng-md-icon>
@@ -35,22 +35,24 @@
           </md-button>
         </div>
       </md-card>
+      
+      <!-- document edit box, hidden on load -->
       <div class="doc-cards" ng-show="editDoc">
         <h5 class="heading">Edit</h5>
         <md-divider style="margin-bottom: 10px"></md-divider>
         <md-input-container flex>
           <label>Title</label>
-          <input class="heading" ng-model="doc.title" type="text">
+          <input class="heading" aria-label="title" ng-model="doc.title" type="text">
         </md-input-container>
         <md-input-container flex>
           <label>Content</label>
-          <textarea class="heading" columns="1" ng-model="doc.content"></textarea>
+          <textarea class="heading" columns="1" aria-label="content" ng-model="doc.content"></textarea>
         </md-input-container>
-        <div class="edit-buttons" layout="row">
+        <div class="edit-buttons" layout="row" layout-wrap>
           <md-button ng-click="editDoc = false" class="login">
             Cancel
           </md-button>
-          <md-button type="submit" ng-click="editDocument(doc._id); editDoc = false" class="login">Edit
+          <md-button type="submit" ng-click="editDocument(doc._id, doc); editDoc = false" class="login">Edit
             <ng-md-icon icon="send" style="fill: #0288d1;"></ng-md-icon>
           </md-button>
         </div>

@@ -55,7 +55,7 @@
       <md-button ng-click="editProfile = false" class="login">
         Cancel
       </md-button style: "fill: light-blue;">
-      <md-button type="submit" ng-click="updateUser()" class="signup">Update
+      <md-button type="submit" ng-click="updateUser(); redirect('view-profile')" class="signup">Update
         <ng-md-icon icon="send" style="fill: #ffffff;"></ng-md-icon>
       </md-button>
     </div>

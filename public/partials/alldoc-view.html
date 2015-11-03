@@ -1,15 +1,16 @@
 <md-content class="about">
-  <div layout="column" class="md-whiteframe-1dp signup-form" data-ng-init="getAllDocuments()">
+  <div layout="row" class="docs md-padding md-whiteframe-1dp signup-form" data-ng-init="getAllDocuments()" layout-wrap>
     <h5 class="heading md-headline">All Documents</h5>
     <md-divider style="margin-bottom: 10px"></md-divider>
-    <div class="docs" ng-repeat="doc in Documents">
-      <md-card class="md-primary doc-cards md-whiteframe-1dp">
+    <div ng-repeat="doc in Documents">
+      <md-card class="md-primary doc-cards md-whiteframe-1dp" layout-wrap>
         <md-card-content class="heading">
+        <!-- populate cards with documents -->
           <span class="md-title">{{doc.title}}</span>
           <span ng-bind="docId" ng-hide="true">{{doc._id}}</span>
           <hr>
           <p>{{doc.content}}</p>
-          <md-list layout="row" class ="chips">
+          <md-list layout="row" class ="chips" layout-wrap>
             <md-list-item >
               <div class=" md-list-item-text compact">
                 <p>Date created:

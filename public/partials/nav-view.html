@@ -1,10 +1,10 @@
 <md-content>
-  <md-toolbar layout="row" class=" md-primary-2 md-whiteframe-z2">
-    <div class="md-toolbar-tools">
+  <md-toolbar layout="row" class=" tool md-primary-2 md-whiteframe-z2">
+    <div class="md-toolbar-tools" layout-wrap layout-align="start">
       <h2>
       <a href="/"><span class = "title">docManager</span></a>
         </h2>
-      <span flex></span>
+      <span flex ></span>
       <a href="/">
         <md-button class="heading">
           Home
@@ -16,16 +16,17 @@
         </md-button>
       </a>
       <a href="/signup">
-        <md-button class="signup cancel">
+        <md-button class="signup">
           Sign up
         </md-button>
       </a>
       <a href="/login">
-        <md-button class="login cancel">
+        <md-button class="login">
           Log in
         </md-button>
       </a>
     </div>
   </md-toolbar>
   <div ui-view="homeView"></div>
+    <div ui-view="aboutView"></div>
   <md-content>
