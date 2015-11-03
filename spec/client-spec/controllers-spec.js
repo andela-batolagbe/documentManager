@@ -20,35 +20,7 @@ describe('docManager Controllers', function() {
 
   beforeEach(angular.mock.module('documentManagerApp'));
 
-  describe('Main Controller', function() {
-
-    beforeEach(inject(function($httpBackend, $rootScope, $controller, _$location_) {
-
-      mockHttp = $httpBackend;
-      scope = $rootScope.$new();
-      location = _$location_;
-      mainCtrl = $controller('MainCtrl', {
-        $scope: scope
-      });
-    }));
-
-
-    it('should display status message', function() {
-
-      expect(scope.displayStatus).toBeDefined();
-      expect(typeof scope.displayStatus).toEqual('function');
-
-    })
-
-    it('should display error message', function() {
-
-      expect(scope.displayError).toBeDefined();
-      expect(typeof scope.displayError).toEqual('function');
-
-    })
-
-  });
-
+  //main controller test
   describe('Main Controller', function() {
 
     beforeEach(inject(function($rootScope, $controller) {
@@ -59,7 +31,7 @@ describe('docManager Controllers', function() {
       });
     }));
 
-
+    //displayStatus test
     it('should display status message', function() {
 
       expect(scope.displayStatus).toBeDefined();
@@ -67,6 +39,7 @@ describe('docManager Controllers', function() {
 
     })
 
+    //displayError test
     it('should display error message', function() {
 
       expect(scope.displayError).toBeDefined();
@@ -76,13 +49,16 @@ describe('docManager Controllers', function() {
 
   });
 
+    //user controller test
   describe('User Controller', function() {
 
     beforeEach(inject(function($httpBackend, $rootScope, $controller, _$location_) {
+      
       var rootScope, userCtrl;
       mockHttp = $httpBackend;
       scope = $rootScope.$new();
       location = _$location_;
+
       mainCtrl = $controller('MainCtrl', {
         $scope: rootScope
       });
@@ -91,13 +67,17 @@ describe('docManager Controllers', function() {
       });
     }));
 
+    //verify request and response statuses after each test
     afterEach(function() {
       mockHttp.verifyNoOutstandingExpectation();
       mockHttp.verifyNoOutstandingRequest();
     });
 
+
+    //log in test
     it('should login a user and redirect to user page', function() {
 
+      //respond to all page redirect request with 200;
       mockHttp.whenGET(/\.html$/).respond(200);
       scope.username = user.username;
       scope.password = user.password;
@@ -117,6 +97,7 @@ describe('docManager Controllers', function() {
 
     });
 
+    //sign up test
     it('should signup a user and redirect to login', function() {
 
       mockHttp.whenGET(/\.html$/).respond(200);
@@ -145,6 +126,7 @@ describe('docManager Controllers', function() {
       expect(location.path).toHaveBeenCalledWith('/login');
     });
 
+    //logout test
     it('should logout a user', function() {
 
       mockHttp.whenGET(/\.html$/).respond(200);
@@ -158,6 +140,7 @@ describe('docManager Controllers', function() {
       expect(location.path).toHaveBeenCalledWith('/');
     });
 
+    //get user details test
     it('should get user details', function() {
 
       var localStorage;
@@ -183,6 +166,7 @@ describe('docManager Controllers', function() {
       expect(location.path).toHaveBeenCalledWith('/');
     });
 
+    //delete user test
     it('should delete user details', function() {
 
       var localStorage;
@@ -210,6 +194,7 @@ describe('docManager Controllers', function() {
 
   });
 
+  //document controller test
   describe('Document Controller', function() {
 
     beforeEach(inject(function($httpBackend, $rootScope, $controller, _$location_) {
@@ -225,8 +210,10 @@ describe('docManager Controllers', function() {
       });
     }));
 
+    //get all document test
     it('should get all documents', function() {
 
+      //respond to all page redirect request with 200
       mockHttp.whenGET(/\.html$/).respond(200);
 
       mockHttp.expectGET('http://localhost:3000/api/documents').respond({});
@@ -238,6 +225,7 @@ describe('docManager Controllers', function() {
       expect(location.path).toHaveBeenCalledWith('/');
     });
 
+    //get all user document test
     it('should get all documents belonging to a user', function() {
 
       var userCntrl, localStorage;

@@ -21,8 +21,10 @@ describe('docManager Services', function() {
       content: 'french fires, bean cake, salad and sandwich'
     }];
 
+  //inject app before each test
   beforeEach(angular.mock.module('documentManagerApp'));
 
+  //user service test
   describe('User Service', function() {
 
     beforeEach(function() {
@@ -32,11 +34,13 @@ describe('docManager Services', function() {
       });
     });
 
+    //service should be defined
     it('should be defined', function() {
       expect(userService).toBeDefined();
 
     });
 
+    //sign up request test
     it('should signup a new user', function() {
 
       mockHttp.expectPOST('http://localhost:3000/api/users/').respond({
@@ -52,6 +56,7 @@ describe('docManager Services', function() {
 
     });
 
+    //login request test
     it('should login a user', function() {
       var activeUser = {
         username: user.username,
@@ -70,6 +75,7 @@ describe('docManager Services', function() {
 
     });
 
+    //update user request test
     it('should update a user details', function() {
 
       var activeUser = {
@@ -95,6 +101,7 @@ describe('docManager Services', function() {
       }));
     });
 
+    //get user profile request test
     it('should get a single user', function() {
       var id = 1;
       mockHttp
@@ -104,6 +111,8 @@ describe('docManager Services', function() {
       expect(activeUser.$$state.value.data).toEqual(jasmine.objectContaining(user));
     });
 
+
+    //delete user account request test
     it('should delete user', function() {
       var id = 1;
       mockHttp
@@ -121,6 +130,8 @@ describe('docManager Services', function() {
 
   });
 
+
+  //document services test
   describe('Document Service', function() {
 
     beforeEach(function() {
@@ -130,11 +141,13 @@ describe('docManager Services', function() {
       });
     });
 
+    //service should be defined
     it('should be defined', function() {
       expect(docService).toBeDefined();
 
     });
 
+    //create document request test
     it('should create a new document', function() {
 
       mockHttp.expectPOST('http://localhost:3000/api/documents').respond({
@@ -150,6 +163,7 @@ describe('docManager Services', function() {
 
     });
 
+    //edit/update document request test
     it('should edit a document', function() {
 
       var doc = {
@@ -175,6 +189,7 @@ describe('docManager Services', function() {
       }));
     });
 
+    //get all documents request test
     it('should get all documents', function() {
 
       mockHttp
@@ -184,6 +199,7 @@ describe('docManager Services', function() {
       expect(docList.$$state.value.data).toEqual(jasmine.objectContaining(docs));
     });
 
+    //get one document request test
     it('should get a single document', function() {
       var id = 2;
       mockHttp
@@ -193,6 +209,7 @@ describe('docManager Services', function() {
       expect(doc.$$state.value.data).toEqual(jasmine.objectContaining(docs[1]));
     });
 
+    //get a user document request test
     it('should get a user documents', function() {
       var userDoc = docs[1];
       userDoc.userId = 2;
@@ -203,6 +220,7 @@ describe('docManager Services', function() {
       expect(userDocs.$$state.value.data).toEqual(jasmine.objectContaining(userDoc));
     });
 
+    //delete document request test
     it('should delete a document', function() {
       var id = 1;
       mockHttp
