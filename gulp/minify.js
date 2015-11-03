@@ -18,14 +18,14 @@ gulp.task('build-js', function() {
 });
 
 
-// gulp.task('build-css', function() {
-//   return gulp.src('public/assets/css/*.css')
-//     .pipe(sourcemaps.init())
-//     .pipe(concat('style.css'))
-//     .pipe(uglify())
-//     .pipe(rename({
-//       extname: '.min.css'
-//     }))
-//     .pipe(sourcemaps.write())
-//     .pipe(gulp.dest('public/assets/css/css'));
-// });
+gulp.task('build-css', function() {
+  return gulp.src('public/assets/css/*.css')
+    .pipe(sourcemaps.init())
+    .pipe(concat('style.css'))
+    .pipe(uglify())
+    .pipe(rename({
+      extname: '.min.css'
+    }))
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest('public/assets/css/css'));
+});

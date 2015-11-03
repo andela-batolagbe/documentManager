@@ -12,7 +12,7 @@ gulp.task('watch', function () {
     'public/app/**/*.js',
     'public/assets/js/*.js'
     
-  ], ['inject']);
+  ]);
 });
 
 module.exports = gulp;
