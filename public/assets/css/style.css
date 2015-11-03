@@ -74,9 +74,9 @@ nav ul li .highlight:active {
 }
 
 .intro-text {
-  background-color: #0288d1;
-  color: #ffffff;
+  color: #0288d1;
   display: inline-block;
+  font-weight: bold;
   padding-right: 15px;
   padding-left: 15px;
   padding-top: 15px;
@@ -100,20 +100,24 @@ nav ul li .highlight:active {
   bottom: 0;
   margin: auto !important;
   margin-bottom: 20px !important;
-  width: 400px !important;
+  width: 75% !important;
   border: solid !important;
   border-color: #0288d1 !important;
   border-width: 2px !important;
 }
 
 .docs {
-  width: 500px !important;
-  margin: auto;
+  border: solid !important;
+  border-color: #0288d1 !important;
+  border-width: 2px !important;
+  width: 80% !important;
+  margin: auto !important;
+  padding-top: 20px;
 }
 
 .chips {
   color: #606060;
-  margin: auto !important;
+  margin-left: 17% !important;
 }
 
 .signup-form {
@@ -174,4 +178,54 @@ nav ul li .highlight:active {
   margin-bottom: 10px;
   font-weight: bold;
   display: block;
+}
+
+.edit-buttons {
+  margin-left: 30% !important;
+}
+
+.head {
+  color: #000000;
+}
+
+/*style for mobile devices*/
+@media only screen and (min-width: 320px) and (max-width: 550px) {
+  .edit-buttons {
+    margin-left: 17% !important;
+  }
+  .cards {
+    padding-top: 30px;
+    width: 100%;
+  }
+  .card {
+    width: 100% !important;
+  }
+  .head {
+    color: #000000;
+    font-size: 45px;
+    width: 75% !important;
+    position: relative;
+    margin: 10%;
+  }
+  .main-intro {
+    text-align: center;
+    margin: auto;
+    width: 100%;
+  }
+  .about {
+    text-align: center;
+    margin: auto;
+    width: 100%;
+  }
+  .signup-form {
+    width: 90%;
+  }
+  .login-form {
+    width: 80% !important;
+  }
+  .tool {
+    height: 20% !important;
+    padding-bottom: 10%;
+  }
+
 }
