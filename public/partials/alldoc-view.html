@@ -1,9 +1,9 @@
 <md-content class="about">
-  <div layout="row" class="docs md-padding md-whiteframe-1dp signup-form" data-ng-init="getAllDocuments()">
+  <div layout="column" class="docs md-padding md-whiteframe-1dp" data-ng-init="getAllDocuments()">
     <h5 class="heading md-headline">All Documents</h5>
     <md-divider style="margin-bottom: 10px"></md-divider>
     <div ng-repeat="doc in Documents">
-      <md-card class="md-primary doc-cards md-whiteframe-1dp" layout-wrap>
+      <md-card class="md-primary doc-cards md-whiteframe-1dp">
         <md-card-content class="heading">
         <!-- populate cards with documents -->
           <span class="md-title">{{doc.title}}</span>
