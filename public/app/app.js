@@ -1,5 +1,13 @@
 var app = angular.module('documentManagerApp', ['ui.router', 'ngMaterial', 'ngMessages', 'ngAnimate', 'ngAria', 'ngMdIcons', 'ngStorage']);
 
+/**
+ * [App Configurations]
+ * @param  {angular method} $stateProvider     [app state configuration]
+ * @param  {angular method} $httpProvider      [http request configuration]
+ * @param  {angular method} $urlRouterProvider [routes configuration]
+ * @param  {angular method} $locationProvider  [location configuration]
+ * @param  {angular method} $mdThemingProvider [for theme configuration]
+ */
 app.config(['$stateProvider', '$httpProvider', '$urlRouterProvider', '$locationProvider', '$mdThemingProvider',
   function($stateProvider, $httpProvider, $urlRouterProvider, $locationProvider, $mdThemingProvider, palletes) {
 
@@ -98,8 +106,14 @@ app.config(['$stateProvider', '$httpProvider', '$urlRouterProvider', '$locationP
         }
       });
     $urlRouterProvider.otherwise("/");
+
+    //use HTML5 mode
     $locationProvider.html5Mode(true);
 
+    /**
+     * define a new primary color palette
+     * for the app
+     */
     var newPrimary = {
       '50': '#ffffff',
       '100': '#ffffff',
@@ -117,6 +131,9 @@ app.config(['$stateProvider', '$httpProvider', '$urlRouterProvider', '$locationP
       'A700': '#bfbfbf'
     };
 
+    /**
+     * define custom white theme for the UI,
+     */
     $mdThemingProvider.definePalette('newPrimary', newPrimary);
 
     $mdThemingProvider.theme('default')
@@ -125,6 +142,15 @@ app.config(['$stateProvider', '$httpProvider', '$urlRouterProvider', '$locationP
       .warnPalette('red')
       .backgroundPalette('newPrimary');
 
+  /**
+   * [Interceptor for attaching token to all request headers]
+   * @param  {q package injector} $q               [description]
+   * @param  {angular state} $location        [description]
+   * @param  {local storage injector} $localStorage  
+   * 
+   * @return {object}                  [header configuration or error message]
+   */
+  
     $httpProvider.interceptors.push(['$q', '$location', '$localStorage', function($q, $location, $localStorage) {
       return {
         'request': function(config) {

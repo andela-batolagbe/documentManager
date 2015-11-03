@@ -2,7 +2,11 @@ angular.module('documentManagerApp')
   .controller('UserCtrl', ['UserService', '$rootScope', '$state', '$scope', '$location', '$mdSidenav', '$localStorage',
     function(UserService, $rootScope, $state, $scope, $location, $mdSidenav, $localStorage) {
 
-
+      /**
+       * [signin: sign in a user and redirect
+       *  to user home if successful]
+       * @return {string} [status message]
+       */
       $scope.signin = function() {
 
         var data = {
@@ -17,10 +21,15 @@ angular.module('documentManagerApp')
           $state.go('userhome');
         }).error(function(err) {
           $rootScope.displayError(err.message);
-           $state.go('login');
+          $state.go('login');
         });
       };
 
+      /**
+       * [signup: register a new user and redirect
+       *  to login page if successful]
+       * @return {string} [status message]
+       */
       $scope.signup = function() {
         var data = {
           name: {
@@ -36,22 +45,35 @@ angular.module('documentManagerApp')
             $rootScope.displayStatus(res.message);
             $state.go('login');
           }).error(function(err) {
-          $rootScope.displayError(err.message + 'try, again');
+          $rootScope.displayError(err.message + ' try, again');
         });
       };
 
+      /**
+       * [logout: log out a user, delete token from storage
+       * and redirect to landing page]
+       * @return {string} [status message]
+       */
       $scope.logout = function() {
 
+        //remove all data/token from local storage
         $localStorage.$reset();
         UserService.logout().success(
           function(res) {
             $rootScope.displayStatus(res.message);
+
+            //redirect to user home
             $state.go('home');
           }).error(function(err) {
           $rootScope.displayError(err.message);
         });
       };
 
+      /**
+       * [getUserDetails get profile details of a 
+       * logged in user]
+       * @return {object} [user details or error message]
+       */
       $rootScope.getUserDetails = function() {
         var userId = $localStorage.activeUser._id;
 
@@ -63,6 +85,10 @@ angular.module('documentManagerApp')
         });
       };
 
+      /**
+       * [deleteUser delete a user account]
+       * @return {string} [status message]
+       */
       $scope.deleteUser = function() {
         var id = $localStorage.activeUser._id;
         UserService.deleteUser(id).success(
@@ -70,7 +96,7 @@ angular.module('documentManagerApp')
             $rootScope.displayStatus(res.message);
             $state.go('home');
           }).error(function(err) {
-          $rootScope.displayStatus(err.message);
+          $rootScope.displayError(err.message);
         });
       };
 
@@ -79,23 +105,27 @@ angular.module('documentManagerApp')
 
       };
 
+      /**
+       * [updateUser: update a user profile]
+       * @return {string} [status message]
+       */
       $scope.updateUser = function() {
         var id = $localStorage.activeUser._id;
         var data = {
-          username: $scope.username,
-          email: $scope.email,
-          password: $scope.password,
+          username: $scope.userDetails.username,
+          email: $scope.userDetails.email,
+          password: $scope.userDetails.password,
           name: {
-            first: $scope.firstname,
-            last: $scope.lastname
+            first: $scope.userDetails.name.first,
+            last: $scope.userDetails.name.last
           }
         };
         UserService.updateUserData(id, data).success(
           function(res) {
             $rootScope.displayStatus(res.message);
-            $state.go('userhome');
+            $state.reload('userhome');
           }).error(function(err) {
-          $rootScope.displayError(err.message + 'try, again');
+          $rootScope.displayError(err.message + ' try, again');
         });
       };
 
