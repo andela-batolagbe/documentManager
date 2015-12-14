@@ -94,7 +94,7 @@ module.exports = {
         } else {
           //verify password
           if (user.password === req.body.password) {
-            var token = jwt.sign(user, secret.key, {
+            var token = jwt.sign(user, process.env.KEY, {
               expiresIn: 144000
             });
             res.status(200).send({
