@@ -1,17 +1,28 @@
 var express = require('express');
 var app = express();
 
+
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var session = require('express-session');
 var methodOverride = require('method-override');
-var config = require('./config');
 var router = require('../app/routes/router');
 
+if (process.env.NODE_ENV === 'development') {
 
+  require('dotenv').load({
+    path: '.env.development'
+  });
+} else if (process.env.NODE_ENV === 'test') {
+  require('dotenv').load({
+    path: '.env.test'
+  });
+} else {
+  require('dotenv').load();
+}
 
-mongoose.connect(config.db);
+mongoose.connect(process.env.DB);
 
 //serve static files from public
 app.use(express.static(__dirname + '/../public'));
@@ -23,7 +34,7 @@ app.use(morgan('dev'));
 
 app.use(session({
   saveUninitialized: false,
-  secret: config.key,
+  secret: process.env.KEY,
   resave: false
 }));
 
