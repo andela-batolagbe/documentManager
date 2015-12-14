@@ -14,10 +14,6 @@ if (process.env.NODE_ENV === 'development') {
   require('dotenv').load({
     path: '.env.development'
   });
-} else if (process.env.NODE_ENV === 'test') {
-  require('dotenv').load({
-    path: '.env.test'
-  });
 } else {
   require('dotenv').load();
 }
