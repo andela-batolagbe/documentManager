@@ -1,5 +1,3 @@
-process.env.NODE_ENV = 'test';
-
 var request = require('supertest');
 var fs = require('fs');
 var jwt = require('jsonwebtoken');
