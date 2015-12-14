@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "test": "jasmine-node spec/api-spec/ --captureExceptions --forceexit",
-    "start": "nodemon server.js"
+    "start": "node server.js"
   },
   "dependencies": {
     "body-parser": "latest",
