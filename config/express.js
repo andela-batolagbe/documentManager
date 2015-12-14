@@ -9,14 +9,7 @@ var session = require('express-session');
 var methodOverride = require('method-override');
 var router = require('../app/routes/router');
 
-if (process.env.NODE_ENV === 'development') {
-
-  require('dotenv').load({
-    path: '.env.development'
-  });
-} else {
-  require('dotenv').load();
-}
+require('dotenv').load();
 
 mongoose.connect(process.env.DB);
 
