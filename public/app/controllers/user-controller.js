@@ -17,11 +17,11 @@ angular.module('documentManagerApp')
 
           $localStorage.activeUser = res.user;
           $localStorage.userToken = res.token;
-          $rootScope.displayStatus(res.message);
           $state.go('userhome');
+          $rootScope.displayStatus(res.message);
         }).error(function(err) {
-          $rootScope.displayError(err.message);
           $state.go('login');
+          $rootScope.displayError(err.message);
         });
       };
 
