@@ -1,7 +1,7 @@
 {
-  "name": "API_Routing",
+  "name": "docManager",
   "version": "0.0.0",
-  "repository": "https://github.com/andela-batolagbe/API_Routing.git",
+  "repository": "https://github.com/andela-batolagbe/documentManager.git",
   "license": "MIT",
   "scripts": {
     "test": "jasmine-node spec/api-spec/ --captureExceptions --forceexit",
